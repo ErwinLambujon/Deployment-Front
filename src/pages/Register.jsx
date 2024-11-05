@@ -48,7 +48,7 @@ const Register = () => {
     }
 
     try {
-      const response = await axios.post("https://deployment-backend-u1v3.onrender.com/api/user/", {
+      const response = await axios.post("http://localhost:8000/api/user/", {
         email: userData.email,
         first_name: userData.first_name,
         last_name: userData.last_name,

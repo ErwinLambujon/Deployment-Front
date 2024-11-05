@@ -1,13 +1,13 @@
-import React from 'react';
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import LinearProgress from '@mui/material/LinearProgress';
-import { AlertCircle } from 'lucide-react';
-import axios from 'axios';
+import React from "react";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import LinearProgress from "@mui/material/LinearProgress";
+import { AlertCircle } from "lucide-react";
+import axios from "axios";
 
 const DeleteAllSubmissions = ({ setPosts, channelId }) => {
   const [open, setOpen] = React.useState(false);
@@ -16,7 +16,7 @@ const DeleteAllSubmissions = ({ setPosts, channelId }) => {
   const [progress, setProgress] = React.useState(0);
 
   const axiosInstance = axios.create({
-    baseURL: "https://deployment-backend-u1v3.onrender.com/",
+    baseURL: "http://localhost:8000/",
     headers: {
       Authorization: `Token ${localStorage.getItem("token")}`,
       "Content-Type": "application/json",
@@ -40,13 +40,17 @@ const DeleteAllSubmissions = ({ setPosts, channelId }) => {
       setIsDeleting(true);
       setError(null);
 
-      const response = await axiosInstance.get(`/api/channels/${channelId}/submissions/`);
+      const response = await axiosInstance.get(
+        `/api/channels/${channelId}/submissions/`
+      );
       const submissions = response.data;
       const totalSubmissions = submissions.length;
 
       for (let i = 0; i < submissions.length; i++) {
         const submission = submissions[i];
-        await axiosInstance.delete(`/api/channels/${channelId}/submissions/${submission.id}/`);
+        await axiosInstance.delete(
+          `/api/channels/${channelId}/submissions/${submission.id}/`
+        );
 
         setProgress(Math.round(((i + 1) / totalSubmissions) * 100));
       }
@@ -62,7 +66,7 @@ const DeleteAllSubmissions = ({ setPosts, channelId }) => {
   };
 
   return (
-    <div style={{ marginBottom: '1rem' }}>
+    <div style={{ marginBottom: "1rem" }}>
       <Button
         variant="contained"
         color="error"
@@ -88,25 +92,27 @@ const DeleteAllSubmissions = ({ setPosts, channelId }) => {
             This action cannot be undone. This will permanently delete all
             submissions from this channel.
           </DialogContentText>
-          
+
           {isDeleting && (
-            <div style={{ marginTop: '1rem' }}>
-              <LinearProgress 
-                variant="determinate" 
-                value={progress} 
+            <div style={{ marginTop: "1rem" }}>
+              <LinearProgress
+                variant="determinate"
+                value={progress}
                 color="error"
               />
-              <DialogContentText style={{ marginTop: '0.5rem', textAlign: 'center' }}>
+              <DialogContentText
+                style={{ marginTop: "0.5rem", textAlign: "center" }}
+              >
                 {progress}% Complete
               </DialogContentText>
             </div>
           )}
-          
+
           {error && (
-            <DialogContentText 
-              style={{ 
-                marginTop: '1rem', 
-                color: '#d32f2f'
+            <DialogContentText
+              style={{
+                marginTop: "1rem",
+                color: "#d32f2f",
               }}
             >
               {error}
@@ -114,10 +120,7 @@ const DeleteAllSubmissions = ({ setPosts, channelId }) => {
           )}
         </DialogContent>
         <DialogActions>
-          <Button 
-            onClick={handleClose} 
-            disabled={isDeleting}
-          >
+          <Button onClick={handleClose} disabled={isDeleting}>
             Cancel
           </Button>
           <Button

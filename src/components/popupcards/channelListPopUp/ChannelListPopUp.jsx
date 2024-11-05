@@ -30,12 +30,12 @@ const ChannelListPopup = ({ open, onClose, roomId, user }) => {
 
       try {
         const response = await axios.get(
-          `https://deployment-backend-u1v3.onrender.com/api/rooms/${roomId}/channels`,
+          `http://localhost:8000/api/rooms/${roomId}/channels`,
           {
             headers: {
               Authorization: `Token ${token}`,
             },
-          } 
+          }
         );
         setChannels(response.data);
       } catch (error) {
@@ -54,7 +54,7 @@ const ChannelListPopup = ({ open, onClose, roomId, user }) => {
     let token = localStorage.getItem("token");
 
     try {
-      await axios.delete(`https://deployment-backend-u1v3.onrender.com/api/channels/${channelId}`, {
+      await axios.delete(`http://localhost:8000/api/channels/${channelId}`, {
         headers: {
           Authorization: `Token ${token}`,
         },
@@ -75,7 +75,7 @@ const ChannelListPopup = ({ open, onClose, roomId, user }) => {
 
   const handleChannelClick = (channelId) => {
     navigate(`/roompage/${roomId}/channel/${channelId}`);
-    onClose(); 
+    onClose();
   };
 
   const handleAddChannel = () => {

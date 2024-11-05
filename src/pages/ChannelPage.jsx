@@ -47,7 +47,7 @@ const ChannelPage = () => {
 
       // Get all submissions
       const submissionsResponse = await axios.get(
-        `https://deployment-backend-u1v3.onrender.com/api/channels/${channelId}/submissions/`,
+        `http://localhost:8000/api/channels/${channelId}/submissions/`,
         { headers }
       );
 
@@ -56,7 +56,7 @@ const ChannelPage = () => {
         submissionsResponse.data.map(async (submission) => {
           try {
             const votesResponse = await axios.get(
-              `https://deployment-backend-u1v3.onrender.com/api/channels/${channelId}/submissions/${submission.id}/voting_marks/`,
+              `http://localhost:8000/api/channels/${channelId}/submissions/${submission.id}/voting_marks/`,
               { headers }
             );
 
@@ -167,7 +167,7 @@ const ChannelPage = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          `https://deployment-backend-u1v3.onrender.com/api/channels/${channelId}/`,
+          `http://localhost:8000/api/channels/${channelId}/`,
           {
             headers: {
               Authorization: `Token ${token}`,
@@ -184,7 +184,7 @@ const ChannelPage = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          `https://deployment-backend-u1v3.onrender.com/api/channels/${channelId}/submissions/`,
+          `http://localhost:8000/api/channels/${channelId}/submissions/`,
           {
             headers: {
               Authorization: `Token ${token}`,
