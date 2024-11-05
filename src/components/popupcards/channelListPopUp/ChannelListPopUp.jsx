@@ -30,7 +30,7 @@ const ChannelListPopup = ({ open, onClose, roomId, user }) => {
 
       try {
         const response = await axios.get(
-          `http://localhost:8000/api/rooms/${roomId}/channels`,
+          `https://deployment-backend-u1v3.onrender.com/api/rooms/${roomId}/channels`,
           {
             headers: {
               Authorization: `Token ${token}`,
@@ -54,7 +54,7 @@ const ChannelListPopup = ({ open, onClose, roomId, user }) => {
     let token = localStorage.getItem("token");
 
     try {
-      await axios.delete(`http://localhost:8000/api/channels/${channelId}`, {
+      await axios.delete(`https://deployment-backend-u1v3.onrender.com/api/channels/${channelId}`, {
         headers: {
           Authorization: `Token ${token}`,
         },

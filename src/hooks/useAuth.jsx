@@ -16,7 +16,7 @@ const useAuth = () => {
         password: user.password,
       });*/
 
-      let response = await axios.post("http://localhost:8000/api/user/login/", {
+      let response = await axios.post("https://deployment-backend-u1v3.onrender.com/api/user/login/", {
         email: user.email,
         password: user.password,
       });
@@ -40,7 +40,7 @@ const useAuth = () => {
       let token = localStorage.getItem("token");
 
       await axios.post(
-        "http://localhost:8000/api/user/logout/",
+        "https://deployment-backend-u1v3.onrender.com/api/user/logout/",
         {},
         {
           headers: { Authorization: `Token ${token}` },

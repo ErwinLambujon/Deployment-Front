@@ -23,7 +23,7 @@ const AddMemberPopup = ({ open, onClose, roomId, user}) => {
     useEffect(() => {
         const fetchEmails = async () => {
             try {
-                const response = await axios.get("http://localhost:8000/api/user/");
+                const response = await axios.get("https://deployment-backend-u1v3.onrender.com/api/user/");
                 const emails = response.data.map((user) => user.email);
                 setEmailDatabase(emails);
             } catch (error) {
@@ -42,7 +42,7 @@ const AddMemberPopup = ({ open, onClose, roomId, user}) => {
 
             const payload = { new_room_members: addedEmails };
             const response = await axios.patch(
-                `http://localhost:8000/api/rooms/${roomId}/`,
+                `https://deployment-backend-u1v3.onrender.com/api/rooms/${roomId}/`,
                 payload,
                 { headers: { Authorization: `Token ${token}` } }
             );

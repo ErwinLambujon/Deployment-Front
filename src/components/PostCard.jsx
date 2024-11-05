@@ -98,7 +98,7 @@ const PostCard = ({
   };
 
   const axiosInstance = axios.create({
-    baseURL: "http://localhost:8000",
+    baseURL: "https://deployment-backend-u1v3.onrender.com/",
     headers: {
       Authorization: `Token ${localStorage.getItem("token")}`,
       "Content-Type": "application/json",

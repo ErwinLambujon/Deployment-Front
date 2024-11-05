@@ -34,7 +34,7 @@ const FiveWhys = () => {
 		try {
 			let token = localStorage.getItem("token");
 			let response = await axios.post(
-				"http://localhost:8000/api/ai/five_whys/",
+				"https://deployment-backend-u1v3.onrender.com/api/ai/five_whys/",
 				{
 					ranked_problem: statement,
 				},

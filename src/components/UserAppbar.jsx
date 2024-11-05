@@ -34,7 +34,7 @@ const UserAppbar = () => {
                     throw new Error("No token found. Please log in.");
                 }
 
-                const response = await axios.get("http://localhost:8000/api/user/get_currently_login/", {
+                const response = await axios.get("https://deployment-backend-u1v3.onrender.com/api/user/get_currently_login/", {
                     headers: {
                         Authorization: `Token ${token}`,
                     },

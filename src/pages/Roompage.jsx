@@ -34,7 +34,7 @@ const RoomPage = () => {
         }
 
         const userResponse = await axios.get(
-          "http://localhost:8000/api/user/get_currently_login/",
+          "https://deployment-backend-u1v3.onrender.com/api/user/get_currently_login/",
           {
             headers: { Authorization: `Token ${token}` },
           }
@@ -42,7 +42,7 @@ const RoomPage = () => {
         setCurrentlyLoginId(userResponse.data);
 
         const roomsResponse = await axios.get(
-          "http://localhost:8000/api/rooms/auth_rooms/",
+          "https://deployment-backend-u1v3.onrender.com/api/rooms/auth_rooms/",
           {
             headers: { Authorization: `Token ${token}` },
           }
@@ -79,7 +79,7 @@ const RoomPage = () => {
       }
 
       const roomsResponse = await axios.get(
-        "http://localhost:8000/api/rooms/auth_rooms/",
+        "https://deployment-backend-u1v3.onrender.com/api/rooms/auth_rooms/",
         {
           headers: { Authorization: `Token ${token}` },
         }

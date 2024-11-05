@@ -45,7 +45,7 @@ const RoomCards = ({ title, roomCode, ownerId, roomId, onDelete, user }) => {
       try {
         let token = localStorage.getItem("token");
         const response = await axios.get(
-          `http://localhost:8000/api/user/${ownerId}/`,
+          `https://deployment-backend-u1v3.onrender.com/api/user/${ownerId}/`,
           {
             headers: {
               Authorization: `Token ${token}`,
@@ -69,7 +69,7 @@ const RoomCards = ({ title, roomCode, ownerId, roomId, onDelete, user }) => {
       setIsDeleting(true);
       let token = localStorage.getItem("token");
 
-      await axios.delete(`http://localhost:8000/api/rooms/${roomId}/`, {
+      await axios.delete(`https://deployment-backend-u1v3.onrender.com/api/rooms/${roomId}/`, {
         headers: {
           Authorization: `Token ${token}`,
         },
