@@ -32,7 +32,7 @@ const UploadPSPopup = ({ channelId, onClose }) => {
     try {
       let token = localStorage.getItem("token");
       const response = await axios.post(
-        `http://localhost:8000/api/channels/${channelId}/submissions/submit/`,
+        `https://babyjoy456.pythonanywhere.com/api/channels/${channelId}/submissions/submit/`,
         formData,
         {
           headers: {

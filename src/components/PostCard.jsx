@@ -20,10 +20,7 @@ import { Document, Page } from "react-pdf";
 import { pdfjs } from "react-pdf";
 import DeleteSubmission from "../components/DeleteSubmission";
 
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  "pdfjs-dist/build/pdf.worker.min.mjs",
-  import.meta.url
-).toString();
+pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.js";
 
 const PostCard = ({
   author,
@@ -98,7 +95,7 @@ const PostCard = ({
   };
 
   const axiosInstance = axios.create({
-    baseURL: "http://localhost:8000/",
+    baseURL: "https://babyjoy456.pythonanywhere.com/",
     headers: {
       Authorization: `Token ${localStorage.getItem("token")}`,
       "Content-Type": "application/json",

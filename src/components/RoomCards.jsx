@@ -43,7 +43,7 @@ const RoomCards = ({ title, roomCode, ownerId, roomId, onDelete, user }) => {
       try {
         let token = localStorage.getItem("token");
         const response = await axios.get(
-          `http://localhost:8000/api/user/${ownerId}/`,
+          `https://babyjoy456.pythonanywhere.com/api/user/${ownerId}/`,
           {
             headers: {
               Authorization: `Token ${token}`,
@@ -67,11 +67,14 @@ const RoomCards = ({ title, roomCode, ownerId, roomId, onDelete, user }) => {
       setIsDeleting(true);
       let token = localStorage.getItem("token");
 
-      await axios.delete(`http://localhost:8000/api/rooms/${roomId}/`, {
-        headers: {
-          Authorization: `Token ${token}`,
-        },
-      });
+      await axios.delete(
+        `https://babyjoy456.pythonanywhere.com/api/rooms/${roomId}/`,
+        {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        }
+      );
 
       onDelete(roomId);
       setOpenDeleteDialog(false);

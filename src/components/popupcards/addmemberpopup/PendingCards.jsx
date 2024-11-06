@@ -29,7 +29,7 @@ const PendingCards = ({ roomId, onAccept }) => {
 
       try {
         const response = await axios.get(
-          `http://localhost:8000/api/rooms/${roomId}/applicants/`,
+          `https://babyjoy456.pythonanywhere.com/api/rooms/${roomId}/applicants/`,
           {
             headers: {
               Authorization: `Token ${token}`,
@@ -45,7 +45,7 @@ const PendingCards = ({ roomId, onAccept }) => {
           pendingApplicants.map(async (applicant) => {
             try {
               const userResponse = await axios.get(
-                `http://localhost:8000/api/user/${applicant.user}`,
+                `https://babyjoy456.pythonanywhere.com/api/user/${applicant.user}`,
                 {
                   headers: {
                     Authorization: `Token ${token}`,
@@ -76,7 +76,7 @@ const PendingCards = ({ roomId, onAccept }) => {
 
     try {
       await axios.post(
-        `http://localhost:8000/api/rooms/${roomId}/manage_request/`,
+        `https://babyjoy456.pythonanywhere.com/api/rooms/${roomId}/manage_request/`,
         { action, request_id: requestId },
         {
           headers: {

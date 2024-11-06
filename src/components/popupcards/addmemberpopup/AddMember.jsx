@@ -29,7 +29,7 @@ const AddMember = ({ emailDatabase, onSubmit, onBack, roomId }) => {
         }
 
         const membersResponse = await axios.get(
-          `http://localhost:8000/api/rooms/${roomId}/members/`,
+          `https://babyjoy456.pythonanywhere.com/api/rooms/${roomId}/members/`,
           {
             headers: {
               Authorization: `Token ${token}`,
@@ -40,7 +40,7 @@ const AddMember = ({ emailDatabase, onSubmit, onBack, roomId }) => {
         const membersData = await Promise.all(
           membersResponse.data.map(async (member) => {
             const userResponse = await axios.get(
-              `http://localhost:8000/api/user/${member.member_id}/`,
+              `https://babyjoy456.pythonanywhere.com/api/user/${member.member_id}/`,
               {
                 headers: {
                   Authorization: `Token ${token}`,
